@@ -1,3 +1,4 @@
+package Prova;
 
 	import lejos.nxt.Button;
 	import lejos.nxt.SensorPort;
@@ -15,10 +16,6 @@
 			UltrasonicSensor uS = new UltrasonicSensor(SensorPort.S1);
 			TouchSensor tS = new TouchSensor(SensorPort.S2);
 			ServoMotor m = new ServoMotor();
-			
-			
-			
-
 				
 			while(!tS.isPressed()){
 				//System.out.print(uS.getDistance()+": ");
