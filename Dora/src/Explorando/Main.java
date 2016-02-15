@@ -26,16 +26,11 @@ public class Main {
 			
 			}
 			while(bt.RecibePush()){
-				if((Motor.A.getTachoCount() < 360) && (Motor.C.getTachoCount() < 360)){
-					Robot.GirarDer();
-					System.out.println("A: "+Motor.A.getTachoCount()+"B: "+Motor.C.getTachoCount());
-				}
-				else{
-					Robot.Parar();
-					
-				}
+				Robot.Adelante();
+				System.out.println("Adelante");
 			}
 			
+			Robot.Parar();
 			Button.waitForAnyPress();
 		
 //		while(!tS.isPressed()){
