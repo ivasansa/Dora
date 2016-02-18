@@ -10,24 +10,60 @@ import Prova.BTReceive;
 import Prova.button;
 
 import java.io.IOException;
-
-import Prova.BT;
+import java.util.ArrayList;
 
 public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		 
 		TouchSensor tS = new TouchSensor(SensorPort.S1);
-		
-
+		Delay d = new Delay();
+		int x=0, y=0;
+		boolean estat;
+		ArrayList<Posicio> mapa = new ArrayList<>();
 			BT bt = new BT();
-			
+			boolean entrat = false;
 			while(bt.RecibeInit()){
 			
 			}
-			while(bt.RecibePush()){
-				Robot.Adelante();
-				System.out.println("Adelante");
+			
+			while(bt.RecibePush(mapa)){
+				mapa.add(new Posicio(0,0,false)); //pos del robot
+				
+				if(!entrat){
+				for(int i = 1; i <= 4; i++){
+					switch (i) {
+					case 1:
+						x=0;
+						y=1;
+						break;
+					case 2:
+						x=-1;
+						y=0;
+						break;
+					case 3:
+						x=0;
+						y=-1;
+						break;
+					case 4:
+						x=1;
+						y=0;
+						break;
+					default:
+						break;
+					}
+					estat = Robot.FrontOcupat();
+					mapa.add(new Posicio(x, y, Robot.FrontOcupat()));
+					
+//					System.out.println("i: "+i+" A: "+Motor.A.getTachoCount()+" C: "+Motor.C.getTachoCount());
+					
+					Robot.GirarIzq();
+					Robot.Parar();
+					entrat = true;
+				}
+				}
+//				break;
 			}
 			
 			Robot.Parar();

@@ -11,8 +11,8 @@ import lejos.nxt.TouchSensor;
 public class UltraSound {
 
 	public static void main(String[] args) {
-		UltrasonicSensor uS = new UltrasonicSensor(SensorPort.S1);
-		TouchSensor tS = new TouchSensor(SensorPort.S2);
+		UltrasonicSensor uS = new UltrasonicSensor(SensorPort.S2);
+		TouchSensor tS = new TouchSensor(SensorPort.S1);
 		Delay d = new Delay();
 		while(!tS.isPressed()){
 			System.out.print(uS.getDistance()+": ");
