@@ -33,12 +33,12 @@ public class Robot {
 			Motor.C.forward();
 		}
 	}
-	public static boolean FrontOcupat(){
+	public static int FrontOcupat(){
 		if(uS.getDistance()>44){
-			return false;
+			return 0;
 		}
 		else{
-			return true;
+			return 1;
 		}
 	}
 }

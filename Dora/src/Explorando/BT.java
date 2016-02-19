@@ -58,7 +58,12 @@ public class BT {
 				System.out.println("Recibido push");
 				
 //				dos.writeUTF("xml");
-				String s = ("|"+mapa.get(1).x+","+mapa.get(1).y+","+mapa.get(1).estat+"|"+mapa.get(2).x+","+mapa.get(2).y+","+mapa.get(2).estat+"|"+mapa.get(3).x+","+mapa.get(3).y+","+mapa.get(3).estat)+"|"+mapa.get(4).x+","+mapa.get(4).y+","+mapa.get(4).estat+"|";
+//				String s = ("|"+mapa.get(1).x+","+mapa.get(1).y+","+mapa.get(1).estat+"|"+mapa.get(2).x+","+mapa.get(2).y+","+mapa.get(2).estat+"|"+mapa.get(3).x+","+mapa.get(3).y+","+mapa.get(3).estat)+"|"+mapa.get(4).x+","+mapa.get(4).y+","+mapa.get(4).estat+"|";
+				String s = ("X="+mapa.get(1).x+"&"+"Y="+mapa.get(1).y+"&"+"V="+mapa.get(1).estat+
+							"ñ"+"X="+mapa.get(2).x+"&"+"Y="+mapa.get(2).y+"&"+"V="+mapa.get(2).estat+
+							"ñ"+"X="+mapa.get(3).x+"&"+"Y="+mapa.get(3).y+"&"+"V="+mapa.get(3).estat+
+							"ñ"+"X="+mapa.get(4).x+"&"+"Y="+mapa.get(4).y+"&"+"V="+mapa.get(4).estat);
+				
 				dos.writeUTF(s);
 				dos.flush();
 				dis.close();

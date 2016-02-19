@@ -15,70 +15,60 @@ import java.util.ArrayList;
 public class Main {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		 
 		TouchSensor tS = new TouchSensor(SensorPort.S1);
 		Delay d = new Delay();
 		int x=0, y=0;
-		boolean estat;
+		int estat;
 		ArrayList<Posicio> mapa = new ArrayList<>();
 			BT bt = new BT();
-			boolean entrat = false;
+			int entrat = 0;
 			while(bt.RecibeInit()){
 			
 			}
-			
+//			Caca = tu
+//			01 = ocupat
+//			01=true&
 			while(bt.RecibePush(mapa)){
-				mapa.add(new Posicio(0,0,false)); //pos del robot
+				mapa.add(new Posicio(0,0,0)); //Posem la posició actual del robot com a 
 				
-				if(!entrat){
+				if(entrat == 0){
 				for(int i = 1; i <= 4; i++){
 					switch (i) {
 					case 1:
+						x=1;
+						y=0;
+						break;
+					case 2:
 						x=0;
 						y=1;
 						break;
-					case 2:
-						x=-1;
-						y=0;
-						break;
 					case 3:
-						x=0;
-						y=-1;
-						break;
-					case 4:
 						x=1;
 						y=0;
+						break;
+					case 4:
+						x=2;
+						y=1;
 						break;
 					default:
 						break;
 					}
 					estat = Robot.FrontOcupat();
+//					System.out.println(estat);
 					mapa.add(new Posicio(x, y, Robot.FrontOcupat()));
 					
-//					System.out.println("i: "+i+" A: "+Motor.A.getTachoCount()+" C: "+Motor.C.getTachoCount());
 					
 					Robot.GirarIzq();
 					Robot.Parar();
-					entrat = true;
+					entrat = 1;
 				}
 				}
-//				break;
 			}
 			
 			Robot.Parar();
 			Button.waitForAnyPress();
 		
-//		while(!tS.isPressed()){
-//			if((Motor.A.getTachoCount() < 360) && (Motor.C.getTachoCount() < 360)){
-//				Robot.GirarDer();
-//				System.out.println("A: "+Motor.A.getTachoCount()+"B: "+Motor.C.getTachoCount());
-//			}
-//			else{
-//				Robot.Parar();
-//				
-//			}
-//		}
 	}
 	
 
