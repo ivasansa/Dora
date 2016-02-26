@@ -1,5 +1,10 @@
 package Explorando;
 
+/**
+ * Clase Posició, que representa una posisión con coordenadas x e y; 
+ * además mantiene el seguimiento de si dicha posición está ocupada o no
+ *
+ */
 public class Posicio {
 	public int x;
 	public int y;
