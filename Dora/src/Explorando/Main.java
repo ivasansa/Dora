@@ -17,17 +17,17 @@ public class Main {
 				mapa.add(new Posicio(1,1,0)); //Posem la posició actual del robot com a 
 				Queue<Integer> q = new Queue<Integer>();
 				if(entrat == 0){
-				for(int i = 1; i <= 8; i++){
-					q = Robot.parsePosicion(i);
-					x = (int) q.pop();
-					y = (int) q.pop();
-					mapa.add(new Posicio(x, y, Robot.FrontOcupat()));
-					
-					Robot.Girar(45);
-					Robot.Parar();
-					entrat = 1;
-					q.clear();
-				}
+					for(int i = 1; i <= 8; i++){
+						q = Robot.parsePosicion(i);
+						x = (int) q.pop();
+						y = (int) q.pop();
+						mapa.add(new Posicio(x, y, Robot.FrontOcupat()));
+						
+						Robot.Girar(45);
+						Robot.Parar();
+						entrat = 1;
+						q.clear();
+					}
 				}
 			}
 			

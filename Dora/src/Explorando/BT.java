@@ -8,7 +8,13 @@ import java.util.LinkedList;
 import lejos.nxt.comm.BTConnection;
 import lejos.nxt.comm.Bluetooth;
 
+/**
+ * Clase que representa la Conexión Bluetooth entre el Robot y el Ordenador
+ * 
+ *
+ */
 public class BT {
+	
 	private BTConnection btc;
 	
 	private String connected = "Connected";
@@ -18,6 +24,9 @@ public class BT {
 	private DataInputStream dis;
 	private DataOutputStream dos;
 	
+	/**
+	 * Método Constructor que inicia la conexión y mantiene abierto un canal de datos.
+	 */
 	public BT(){
 		System.out.println(waiting);
 		btc = Bluetooth.waitForConnection();
@@ -27,7 +36,12 @@ public class BT {
 		
 	}
 	
-	public boolean RecibeInit (){
+	/**
+	 * Método RecibeInit, que registra false cuando se recibe la señal "init" desde el PC 
+	 * @return	false: si se recibe "init"
+	 * 			true:	si no se recibe "init"  		
+	 */
+	public boolean RecibeInit() {
 		try {
 			String n = dis.readUTF();
 			if(n.equals("init")){
@@ -43,9 +57,11 @@ public class BT {
 		
 	}
 	/**
-	 * 
-	 * @param mapa
-	 * @return
+	 * Método RecibePush, que controla la recepción de la señal "push" desde el PC. Cuando esto ocurre envía al PC una String con la LinkedList mapa parseada en forma de string.
+	 * A continuación, cierra la conexión BT con el PC
+	 * @param mapa		LinkedList con la información de la ocupación de las casillas colindantes al Robot
+	 * @return			true: cuando no se recibe "push"
+	 * 					false: cuando se recibe "push"
 	 */
 	public boolean RecibePush (LinkedList<Posicio> mapa){
 		try {
@@ -56,8 +72,6 @@ public class BT {
 			if(n.equals("push")){
 				System.out.println("Recibido push");
 				
-//				dos.writeUTF("xml");
-//				String s = ("|"+mapa.get(1).x+","+mapa.get(1).y+","+mapa.get(1).estat+"|"+mapa.get(2).x+","+mapa.get(2).y+","+mapa.get(2).estat+"|"+mapa.get(3).x+","+mapa.get(3).y+","+mapa.get(3).estat)+"|"+mapa.get(4).x+","+mapa.get(4).y+","+mapa.get(4).estat+"|";
 				String s = ("X="+mapa.get(1).x+"&"+"Y="+mapa.get(1).y+"&"+"V="+mapa.get(1).estat+
 							"ñ"+"X="+mapa.get(2).x+"&"+"Y="+mapa.get(2).y+"&"+"V="+mapa.get(2).estat+
 							"ñ"+"X="+mapa.get(3).x+"&"+"Y="+mapa.get(3).y+"&"+"V="+mapa.get(3).estat+
@@ -73,7 +87,6 @@ public class BT {
 				dos.flush();
 				dis.close();
 				dos.close();
-//				Thread.sleep(100); // wait for data to drain
 				System.out.println(closing);
 				btc.close();
 				return false;
