@@ -52,7 +52,7 @@ public class Robot {
 	 * @param i		Número de giro
 	 * @return		q, que es una Queue con la coordenada x,y
 	 */
-	public static Queue<Integer> parsePosicion(int i){
+	public static Queue<Integer> parsePosicion(int i) throws ParseException {
 		int x=0,y=0;
 		Queue<Integer> q = new Queue<Integer>();
 		
@@ -90,7 +90,7 @@ public class Robot {
 			y=0;
 			break;
 		default:
-			break;
+			throw new ParseException("Error en el Parsing");
 		}
 		
 		q.addElement(x);

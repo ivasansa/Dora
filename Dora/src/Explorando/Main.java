@@ -18,7 +18,13 @@ public class Main {
 				Queue<Integer> q = new Queue<Integer>();
 				if(entrat == 0){
 					for(int i = 1; i <= 8; i++){
-						q = Robot.parsePosicion(i);
+						
+						try {
+							q = Robot.parsePosicion(i);
+						} catch (ParseException e) {
+							System.out.println(e.getMessage());
+						}
+						
 						x = (int) q.pop();
 						y = (int) q.pop();
 						mapa.add(new Posicio(x, y, Robot.FrontOcupat()));
